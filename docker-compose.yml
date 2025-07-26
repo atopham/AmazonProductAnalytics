@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  amazon-analytics-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DOCKER_CONTAINER=true
+      # Set to 'true' for persistent storage, 'false' for in-memory
+      - USE_PERSISTENT_DB=${USE_PERSISTENT_DB:-true}
+    # Conditional volume mount - only used when USE_PERSISTENT_DB=true
+    volumes:
+      - ./data:/app/data:rw
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 1G 
