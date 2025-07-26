@@ -2,7 +2,6 @@ import os
 import logging
 import duckdb
 from pathlib import Path
-from typing import Optional
 import kagglehub
 
 logger = logging.getLogger(__name__)

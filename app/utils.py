@@ -1,7 +1,6 @@
 import logging
 from typing import List, Dict, Any
 import duckdb
-import pandas as pd
 
 
 # Configure logging

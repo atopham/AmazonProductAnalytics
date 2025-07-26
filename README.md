@@ -22,7 +22,7 @@ A FastAPI application for analyzing Amazon UK product categories using DuckDB. T
 
 1. **Clone the repository**:
    ```bash
-   git clone <your-repo-url>
+   git clone git@github.com:atopham/AmazonProductAnalytics.git
    cd AmazonProductAnalytics
    ```
 
@@ -54,7 +54,7 @@ On the first run, the application will download approximately 2.2 million produc
 
 ## Docker Deployment
 
-### Option 1: In-Memory Database (Default - Recommended for Testing)
+### Option 1: Persistent Database (Recommended for Production)
 
 Fast startup with no persistent storage - data is downloaded fresh each time:
 
@@ -71,7 +71,7 @@ docker-compose up --build
 - Data downloaded on each restart
 - No persistence between restarts
 
-### Option 2: Persistent Database (Recommended for Production)
+### Option 2: In-Memory Database (Recommended for Testing)
 
 Persistent storage with volume mounts for data and database:
 

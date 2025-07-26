@@ -1,6 +1,6 @@
 import duckdb
 import logging
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any
 from .utils import handle_duckdb_error
 
 logger = logging.getLogger(__name__)

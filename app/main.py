@@ -1,10 +1,8 @@
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-import duckdb
 import logging
-import os
-from typing import List, Optional
+from typing import List
 from contextlib import asynccontextmanager
 
 from .models import CategoryStats, ZScoreOutlier, VariabilityCategory, APIResponse
