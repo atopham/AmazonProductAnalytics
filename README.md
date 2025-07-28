@@ -56,10 +56,31 @@ On the first run, the application will download approximately 2.2 million produc
 
 ### Option 1: Persistent Database (Recommended for Production)
 
+Persistent storage with volume mounts for data and database:
+
+```bash
+# Create data directory
+mkdir -p data
+
+# Run with persistent storage
+docker-compose up --build
+```
+
+**Pros**: 
+- Fast subsequent starts
+- Data persistence between restarts
+- Production-ready
+
+**Cons**: 
+- Requires disk space (~2GB)
+- Initial startup takes longer
+
+### Option 2: In-Memory Database (Recommended for Testing)
+
 Fast startup with no persistent storage - data is downloaded fresh each time:
 
 ```bash
-docker-compose up --build
+USE_PERSISTENT_DB=false docker-compose up --build
 ```
 
 **Pros**: 
@@ -70,27 +91,6 @@ docker-compose up --build
 **Cons**: 
 - Data downloaded on each restart
 - No persistence between restarts
-
-### Option 2: In-Memory Database (Recommended for Testing)
-
-Persistent storage with volume mounts for data and database:
-
-```bash
-# Create data directory
-mkdir -p data
-
-# Run with persistent storage
-USE_PERSISTENT_DB=true docker-compose up --build
-```
-
-**Pros**: 
-- Fast subsequent starts
-- Data persistence between restarts
-- Production-ready
-
-**Cons**: 
-- Requires disk space (~2-3GB)
-- Initial startup takes longer
 
 ### Option 3: Read-Only Data Mount
 
